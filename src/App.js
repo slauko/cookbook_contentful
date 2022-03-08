@@ -5,6 +5,7 @@ import Nav from './views/Nav';
 import Landing from './views/Landing';
 import Results from './views/Results';
 import Recipe from './views/Recipe';
+import './app.css';
 
 const client = createClient({
   space: process.env.REACT_APP_SPACE_ID,

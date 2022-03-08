@@ -18,6 +18,9 @@ export default function Nav() {
       <NavLink activeclassname="active" className="link" to="/recipe/1">
         Recipe
       </NavLink>
+      <div className="nav-search-div">
+        <input type="text" placeholder="Search" />
+      </div>
     </nav>
   );
 }

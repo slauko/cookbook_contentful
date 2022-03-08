@@ -1,10 +1,11 @@
 import React from 'react';
 import Carousel from '../components/Carousel';
+import './landing.css';
 
 export default function Landing() {
   return (
     <>
-      <div>Landing</div>
+      <div className="landing-div">Landing</div>
       <Carousel />
     </>
   );
