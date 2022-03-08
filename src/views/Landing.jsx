@@ -1,6 +1,6 @@
 import React from 'react';
 import Carousel from '../components/Carousel';
-import './landing.css';
+import './css/landing.css';
 
 export default function Landing() {
   return (
