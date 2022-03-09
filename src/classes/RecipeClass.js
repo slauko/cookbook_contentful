@@ -1,9 +1,10 @@
 export default class RecipeClass {
     constructor(hit) {
-      this.title = hit.title;
-      this.id = hit.id;
-      this.rating = hit.rating;
-      //this.description = hit.description.content.value;
+      this.title = hit.fields.title;
+      this.rating = hit.fields.rating;
+      this.id = hit.sys.id;
+      //this.img = hit.img;
+      this.description = hit.fields.description.content[0].content[0].value;
     }
   }
   

@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import './css/recipe.css';
+import { createClient } from 'contentful';
+import DetailedRecipeClass from '../classes/DetailedRecipeClass';
+
+const client = createClient({
+  space: process.env.REACT_APP_SPACE_ID,
+  accessToken: process.env.REACT_APP_AUTH_TOKEN,
+});
 
 export default function Recipe({ client }) {
   const { id } = useParams();
-  const recipe = {
+
+  useEffect(() => {
+    client.getEntry(id).then(function (entry) {
+      console.log(entry);
+      setRecipe(new DetailedRecipeClass(entry));
+    });
+  }, []);
+
+  const [recipe, setRecipe] = useState({
     title: 'Kuchen',
     picture:
       'https://de.rc-cdn.community.thermomix.com/recipeimage/jtvuiwjs-cf76f-438951-cfcd2-2nm5kkqw/b1db0880-a300-4618-ad14-18be177dfbe8/main/0815-kuchen-gugelhupf-mit-gelinggarantie.jpg',
@@ -35,7 +50,37 @@ export default function Recipe({ client }) {
     ],
     preparation: 'Alles zusammen mixen und backen.',
     rating: 4.7,
-  }; //getRecipeFromID(id);
+  });
+
+  /*const recipe = {
+    title: "Kuchen",
+    picture: "https://de.rc-cdn.community.thermomix.com/recipeimage/jtvuiwjs-cf76f-438951-cfcd2-2nm5kkqw/b1db0880-a300-4618-ad14-18be177dfbe8/main/0815-kuchen-gugelhupf-mit-gelinggarantie.jpg",
+    description: "Omas Lieblingskuchen",
+    ingrediens: [
+      {
+        description: "Mehl",
+        amount: "200",
+        unit: "g",
+      },
+      {
+        description: "Zucker",
+        amount: "50",
+        unit: "g",
+      },
+      {
+        description: "Salz",
+        amount: "100",
+        unit: "g",
+      },
+      {
+        description: "Milch",
+        amount: "200",
+        unit: "ml",
+      },
+    ],
+    preparation: "Alles zusammen mixen und backen.", 
+    rating: 4.7
+  };//getRecipeFromID(id);*/
   return (
     <div className="recipe-div">
       <div>
