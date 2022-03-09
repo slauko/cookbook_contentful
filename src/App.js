@@ -4,14 +4,14 @@ import Footer from './views/Footer';
 import Nav from './views/Nav';
 import Landing from './views/Landing';
 import SearchResults from './views/SearchResults';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Recipe from './views/Recipe';
 import RecipeClass from './classes/RecipeClass';
 import './app.css';
 
 const client = createClient({
-  space: "h5pc0o4cj51n",
-  accessToken: "oijppwp2beVledF05dFDxlayGoNexONvWIqiizuINnw",
+  space: process.env.REACT_APP_SPACE_ID,
+  accessToken: process.env.REACT_APP_AUTH_TOKEN,
 });
 
 function App() {
