@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/search" element={<SearchResults />} />
-          <Route path="/recipe/:id" element={<Recipe />} />
+          <Route path="/recipe/:id" element={<Recipe client={client} />} />
         </Routes>
       </main>
       <Footer />
