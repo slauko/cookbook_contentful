@@ -15,7 +15,7 @@ export default function Nav() {
       >
         Search
       </NavLink>
-      <NavLink activeclassname="active" className="link" to="/recipe/1">
+      <NavLink activeclassname="active" className="link" to="/recipe/17WMIvrpXN12XIKI7Q3rPh">
         Recipe
       </NavLink>
       <div className="nav-search-div">

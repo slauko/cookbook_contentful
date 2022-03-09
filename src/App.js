@@ -22,11 +22,13 @@ function App() {
   }, []);
 
   function fetchData(client) {
-    let results = client.getEntries({
-      content_type: "recipe",
-    }).then(function (entries) {
-      populate(entries);
-    });
+    let results = client
+      .getEntries({
+        content_type: 'recipe',
+      })
+      .then(function (entries) {
+        populate(entries);
+      });
     console.log(results);
   }
 
@@ -35,15 +37,15 @@ function App() {
 
     u.items.forEach((hit) => {
       if (!hit.fields.title) return;
-
-      const recipe = new RecipeClass(hit.fields);
+      console.log(hit)
+      const recipe = new RecipeClass(hit);
 
       a.push(recipe);
     });
 
     setRecipes(a);
 
-    console.log(a)
+    console.log(a);
   };
 
   console.log(process.env);
@@ -55,7 +57,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/search" element={<SearchResults />} />
-          <Route path="/recipe/:id" element={<Recipe />} />
+          <Route path="/recipe/:id" element={<Recipe client={client} />} />
         </Routes>
       </main>
       <Footer />
