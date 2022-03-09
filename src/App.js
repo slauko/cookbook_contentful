@@ -3,7 +3,7 @@ import { createClient } from 'contentful';
 import Footer from './views/Footer';
 import Nav from './views/Nav';
 import Landing from './views/Landing';
-import Results from './views/Results';
+import SearchResults from './views/SearchResults';
 import Recipe from './views/Recipe';
 import './app.css';
 
@@ -21,7 +21,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/search" element={<Results />} />
+          <Route path="/search" element={<SearchResults />} />
           <Route path="/recipe/:id" element={<Recipe />} />
         </Routes>
       </main>

@@ -10,7 +10,7 @@ function useQuery() {
   return React.useMemo(() => new URLSearchParams(search), [search]);
 }
 
-export default function Results() {
+export default function SearchResults() {
   const query = useQuery();
   // console.log('query', query);
 
