@@ -1,18 +1,19 @@
 .recipe-div {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   font-style: italic;
-  height: 70vh;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  padding-left: 10px;
 }
-
-.recipe-image{
-  height: 35%;
-}
-
-.recipe-left{
-  padding: 20px;
-}
-
-.recipe-right{
-  padding: 10px;
+.ingrediens {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 5px;
 }
