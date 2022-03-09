@@ -49,7 +49,11 @@ export default function Landing() {
           alt="bild"
         /> */}
 
-        <RecipeCarousel images={images}></RecipeCarousel>
+        <RecipeCarousel
+          title="High Rated Recipes"
+          description="Some description"
+          images={images}
+        ></RecipeCarousel>
       </div>
     </>
   );
