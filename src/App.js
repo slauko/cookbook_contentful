@@ -15,6 +15,8 @@ const client = createClient({
 });
 
 function App() {
+  const [recipes, setRecipes] = useState([]);
+
   useEffect(() => {
     fetchData(client);
   }, []);
@@ -34,10 +36,12 @@ function App() {
     u.items.forEach((hit) => {
       if (!hit.fields.title) return;
 
-      const article = new RecipeClass(hit.fields);
+      const recipe = new RecipeClass(hit.fields);
 
-      a.push(article);
+      a.push(recipe);
     });
+
+    setRecipes(a);
 
     console.log(a)
   };
