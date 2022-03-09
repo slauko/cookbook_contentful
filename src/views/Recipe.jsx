@@ -1,5 +1,5 @@
 import React from 'react';
-import Rating from 'react-rating';
+import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import './css/recipe.css';
@@ -38,25 +38,57 @@ export default function Recipe({ client }) {
   }; //getRecipeFromID(id);
   return (
     <div className="recipe-div">
-      <div className="recipe-left">
-        Recipe for ID: {id}
+      <div>
+        {/* Recipe for ID: {id} */}
         <h3>{recipe.title}</h3>
-        <img className="recipe-image" src={recipe.picture} alt="Img" />
-        <h4>{recipe.description}</h4>
-        <Rating initialRating={recipe.rating} fractions={2} readonly={false} />
+        <div
+          style={{
+            width: '100%',
+            height: '80%',
+            backgroundImage: `url(${recipe.picture})`,
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+          }}
+        ></div>
       </div>
-      <div className="recipe-right">
+      <div>
         <h4>Zutaten:</h4>
-        {recipe.ingrediens.map((ingredient) => {
-          return (
-            <div key={uuidv4()}>
-              <p>
+        <div className="ingrediens">
+          {recipe.ingrediens.map((ingredient) => {
+            return (
+              <div key={uuidv4()} style={{ minWidth: '150px' }}>
                 {ingredient.amount}
                 {ingredient.unit} {ingredient.description}
-              </p>
-            </div>
-          );
-        })}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <h4>Beschreibung:</h4>
+        {recipe.description}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignSelf: 'center',
+            justifyContent: 'flex-end',
+            fontStyle: 'normal',
+            height: '100%',
+          }}
+        >
+          <ReactStars
+            count={5}
+            value={recipe.rating}
+            size={50}
+            isHalf={true}
+            edit={false}
+          />
+          <div style={{ alignSelf: 'center' }}>{recipe.rating + ' / 5.0'}</div>
+        </div>
+      </div>
+      <div>
         <h4>Zubereitung:</h4>
         {recipe.preparation}
       </div>
