@@ -37,7 +37,7 @@ function App() {
 
     u.items.forEach((hit) => {
       if (!hit.fields.title) return;
-      console.log(hit)
+      console.log(hit);
       const recipe = new RecipeClass(hit);
 
       a.push(recipe);
@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <main>
+      <main className="container">
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/search" element={<SearchResults />} />

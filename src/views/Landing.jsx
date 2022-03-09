@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createClient } from 'contentful';
 import RecipeCarousel from '../components/Carousel';
 import './css/landing.css';
+import RecipeCards from '../components/Cards';
 
 const _client = createClient({
   space: process.env.REACT_APP_SPACE_ID,
@@ -10,6 +11,7 @@ const _client = createClient({
 
 export default function Landing() {
   const [images, setImages] = useState();
+  const [cmsData, setCmsData] = useState();
   useEffect(() => {
     // _client.getEntry('17WMIvrpXN12XIKI7Q3rPh').then((data) => {
     //   console.log('data', data);
@@ -23,6 +25,7 @@ export default function Landing() {
         content_type: 'recipe',
       })
       .then((recipes) => {
+        setCmsData(recipes.items);
         const imgs = recipes.items.map((recipe) => {
           // console.log(recipe.fields.image[0]);
           return {
@@ -54,6 +57,10 @@ export default function Landing() {
           description="Some description"
           images={images}
         ></RecipeCarousel>
+      </div>
+
+      <div>
+        <RecipeCards recipes={cmsData} />
       </div>
     </>
   );
