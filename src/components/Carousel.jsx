@@ -29,7 +29,7 @@ export default function RecipeCarousel({ title, description, images }) {
             </div>
           </div>
           <div class="carousel-inner rounded">
-            <Carousel className="carousel-section container-fluid">
+            <Carousel>
               {images &&
                 images.map((img, index) => {
                   return (
