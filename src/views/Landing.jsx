@@ -9,14 +9,33 @@ const _client = createClient({
 });
 
 export default function Landing() {
-  const [recipe, setRecipe] = useState();
+  const [images, setImages] = useState();
   useEffect(() => {
-    _client.getEntry('17WMIvrpXN12XIKI7Q3rPh').then((data) => {
-      console.log('data', data);
-      console.log('image-url', data.fields.image[0].fields.file.url);
+    // _client.getEntry('17WMIvrpXN12XIKI7Q3rPh').then((data) => {
+    //   console.log('data', data);
+    //   console.log('image-url', data.fields.image[0].fields.file.url);
 
-      setRecipe(data);
-    });
+    //   setImages(data);
+    // });
+
+    _client
+      .getEntries({
+        content_type: 'recipe',
+      })
+      .then((recipes) => {
+        const imgs = recipes.items.map((recipe) => {
+          // console.log(recipe.fields.image[0]);
+          return {
+            title: recipe.fields.title,
+            url: recipe.fields.image[0].fields.file.url,
+            description: recipe.fields.image[0].fields.description,
+          };
+        });
+
+        console.log('imgs', imgs);
+        setImages(imgs);
+      });
+
     return;
   }, []);
 
@@ -24,13 +43,13 @@ export default function Landing() {
     <>
       <div className="landing-div">Landing</div>
       <div>
-        <img
-          src={recipe?.fields.image[0].fields.file.url}
+        {/* <img
+          src={images?.fields.image[0].fields.file.url}
           width="900px"
           alt="bild"
-        />
+        /> */}
 
-        <RecipeCarousel></RecipeCarousel>
+        <RecipeCarousel images={images}></RecipeCarousel>
       </div>
     </>
   );

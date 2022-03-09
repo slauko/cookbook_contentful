@@ -20,5 +20,5 @@ body {
 
 main {
   border: 1px solid black;
-  height: 70vh;
+  min-height: 70vh;
 }
