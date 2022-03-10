@@ -2,23 +2,88 @@
   --font-playfair: 'Playfair Display', serif;
   --font-roboto: 'Roboto', sans-serif;
   --font-raleway: 'Raleway', sans-serif;
+
+  /* "gray-rose" color-scheme */
+  --clr-primary-light: rgb(249, 250, 217, 0.1);
+  --clr-primary-light-middle: rgb(190, 150, 137, 0.2);
+  --clr-primary-middle: rgb(142, 78, 79, 0.7);
+  --clr-primary-middle-dark: rgb(102, 62, 75, 0.7);
+  --clr-primary-dark: rgb(72, 48, 59, 0.9);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
   background: white;
 
   font-family: var(--font-raleway);
+}
 
-  padding: 1rem 2vw;
-  margin: 0 auto;
+.App {
   max-width: 70rem;
+  margin: auto;
 }
 
 main {
   border: 1px solid black;
   min-height: 70vh;
+}
+
+.font-roboto {
+  font-family: var(--font-roboto);
+}
+
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+.font-raleway {
+  font-family: var(--font-raleway);
+}
+
+.color-light {
+  background: var(--clr-primary-light) !important;
+}
+
+.color-light-middle {
+  background: var(--clr-primary-light-middle) !important;
+}
+
+.color-middle {
+  background: var(--clr-primary-middle) !important;
+}
+
+.color-middle-dark {
+  background: var(--clr-primary-middle-dark) !important;
+}
+
+.color-dark {
+  background: var(--clr-primary-dark) !important;
+}
+
+.text-color-light {
+  color: var(--clr-primary-light) !important;
+}
+
+.text-color-light-middle {
+  color: var(--clr-primary-light-middle) !important;
+}
+
+.text-color-middle {
+  color: var(--clr-primary-middle) !important;
+}
+
+.text-color-middle-dark {
+  color: var(--clr-primary-middle-dark) !important;
+}
+
+.text-color-dark {
+  color: var(--clr-primary-dark) !important;
 }

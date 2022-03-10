@@ -28,6 +28,7 @@ export default function RecipeCarousel({ title, description, images }) {
               </p>
             </div>
           </div>
+          {/* <div class="carousel-inner rounded border border-dark border-3"> */}
           <div class="carousel-inner rounded">
             <Carousel>
               {images &&

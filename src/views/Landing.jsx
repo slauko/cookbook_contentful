@@ -10,6 +10,7 @@ const _client = createClient({
 
 export default function Landing() {
   const [images, setImages] = useState();
+
   useEffect(() => {
     // _client.getEntry('17WMIvrpXN12XIKI7Q3rPh').then((data) => {
     //   console.log('data', data);
