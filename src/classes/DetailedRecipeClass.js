@@ -1,13 +1,14 @@
 import IngredientClass from '../classes/IngredientClass';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 export default class DetailedRecipeClass {
     constructor(hit) {
       this.title = hit.fields.title;
       this.rating = hit.fields.rating;
       this.ingrediens = this.setIngrediens(hit.fields.ingridients);
-      this.preparation = hit.fields.preparation.content[0].content[0].value;
+      this.preparation = documentToHtmlString(hit.fields.preparation);
       this.picture = hit.fields.image[0].fields.file.url;
-      this.description = hit.fields.description.content[0].content[0].value;
+      this.description = documentToHtmlString(hit.fields.description);
     }
     setIngrediens(list){
         let listIngrediens = [];

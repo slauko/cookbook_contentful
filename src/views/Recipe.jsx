@@ -55,7 +55,7 @@ export default function Recipe({ client }) {
           </div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <h4>Beschreibung:</h4>
-            {recipe.description}
+            <div dangerouslySetInnerHTML={{__html: recipe.description}}></div>
             <div
               style={{
                 display: 'flex',
@@ -80,7 +80,7 @@ export default function Recipe({ client }) {
           </div>
           <div>
             <h4>Zubereitung:</h4>
-            {recipe.preparation}
+            <div dangerouslySetInnerHTML={{__html: recipe.preparation}}></div>
           </div>
         </>
       )}
