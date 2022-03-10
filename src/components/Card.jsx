@@ -17,11 +17,21 @@ export default function RecipeCard({ recipe }) {
 
   return (
     <div className="card">
-      <div className="card-header text-white d-flex align-items-end justify-content-between">
-        <div style={{ margin: '0 0 0.1rem .4rem' }}>Sweet</div>
+      <div className="card-header text-white d-flex align-items-end justify-content-evenly gap-2">
+        {/* <div style={{ margin: '0 0 0.1rem .4rem' }}>Sweet</div>
         <div>
           <i className="fa fa-cheese"></i>
-        </div>
+        </div> */}
+        {recipe &&
+          recipe.fields.attributes?.map((attr, index) => {
+            if (index <= 2) {
+              return (
+                <>
+                  <div className="recipe-attr">{attr}</div>
+                </>
+              );
+            }
+          })}
       </div>
       <img
         className="card-img-top"
@@ -47,11 +57,21 @@ export default function RecipeCard({ recipe }) {
           </button>
         </div>
       </div>
-      <div className="card-footer text-muted color-light-middle d-flex align-items-end">
-        <div>
-          <i className="far fa-clock"></i>
-        </div>{' '}
-        <div style={{ margin: '0 0 0.1rem .4rem' }}>50 min</div>
+      <div className="card-footer color-light-middle d-flex align-items-end">
+        <div className="card-footer-infos d-flex">
+          {recipe &&
+            recipe.metadata.tags?.map((tag, index) => {
+              if (index <= 2) {
+                return (
+                  <>
+                    <div className="recipe-tag">#{tag.sys.id}</div>
+                  </>
+                );
+              }
+            })}
+          {/* <div>50 min</div>
+          <div>50 min</div> */}
+        </div>
       </div>
     </div>
   );

@@ -24,9 +24,32 @@ export default function RecipeCards({ recipes }) {
           recipes.map((recipe) => {
             // console.log(recipe.fields.image[0]);
             return (
-              <div className="card-col col-8 col-sm-6 col-lg-3 py-2">
-                <RecipeCard recipe={recipe} />
-              </div>
+              <>
+                <div className="card-col col-8 col-sm-6 col-lg-3 py-2">
+                  <RecipeCard recipe={recipe} />
+                </div>
+                <div className="card-col col-8 col-sm-6 col-lg-3 py-2">
+                  <RecipeCard recipe={recipe} />
+                </div>
+                <div className="card-col col-8 col-sm-6 col-lg-3 py-2">
+                  <RecipeCard recipe={recipe} />
+                </div>
+                <div className="card-col col-8 col-sm-6 col-lg-3 py-2">
+                  <RecipeCard recipe={recipe} />
+                </div>
+                <div className="card-col col-8 col-sm-6 col-lg-3 py-2">
+                  <RecipeCard recipe={recipe} />
+                </div>
+                <div className="card-col col-8 col-sm-6 col-lg-3 py-2">
+                  <RecipeCard recipe={recipe} />
+                </div>
+                <div className="card-col col-8 col-sm-6 col-lg-3 py-2">
+                  <RecipeCard recipe={recipe} />
+                </div>
+                <div className="card-col col-8 col-sm-6 col-lg-3 py-2">
+                  <RecipeCard recipe={recipe} />
+                </div>
+              </>
             );
           })}
         {/* <div className="card-col col-8 col-sm-6 col-lg-3 py-2">

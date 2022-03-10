@@ -46,3 +46,20 @@
   min-height: 10rem;
   object-fit: cover;
 }
+
+.card-footer-infos {
+  width: 100%;
+  gap: 10px;
+}
+
+.recipe-tag {
+  font-size: 8pt;
+  background: lightgray;
+  color: black;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.recipe-attr {
+  font-size: 8pt;
+}
