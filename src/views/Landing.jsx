@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { createClient } from 'contentful';
 import RecipeCarousel from '../components/Carousel';
 import './css/landing.css';
+import CMApi from '../importData';
 
 const _client = createClient({
   space: process.env.REACT_APP_SPACE_ID,
@@ -40,6 +41,12 @@ export default function Landing() {
     return;
   }, []);
 
+  function testCMapi() {
+    const cmapi = new CMApi();
+
+    cmapi.getAssets();
+  }
+
   return (
     <>
       <div className="landing-div">Landing</div>
@@ -49,6 +56,8 @@ export default function Landing() {
           width="900px"
           alt="bild"
         /> */}
+
+        <button onClick={testCMapi}>Test CMApi</button>
 
         <RecipeCarousel
           title="High Rated Recipes"
