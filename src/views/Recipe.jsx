@@ -153,13 +153,8 @@ export default function Recipe({ client }) {
 
               <div
                 className="fs-5"
-                dangerouslySetInnerHTML={{ __html: recipe?.description }}
+                dangerouslySetInnerHTML={{ __html: recipe?.preparation }}
               ></div>
-              <div>
-                test test test test test test test test test test test test test
-                test test test test test test test test test test test test test
-                test test test test test test test test test test test test test{' '}
-              </div>
             </div>
             <div className="col col-sm-6 col-lg-4 order-first order-lg-last">
               <div className="font-fairplay fw-bold h3">Ingridients</div>
@@ -177,7 +172,7 @@ export default function Recipe({ client }) {
                           </div>
                           <div className="col-8 col-sm-8 col-lg-9">
                             <div className="font-fairplay">
-                              {ingredient.description}
+                              {ingredient.name}
                             </div>
                           </div>
                         </div>

@@ -9,13 +9,13 @@ export default function RecipeCard({ recipe }) {
   const navigate = useNavigate();
   const id = '17WMIvrpXN12XIKI7Q3rPh';
 
-  console.log(
-    'test',
-    recipe.fields.description.content[0].content.reduce(
-      (acc, curr) => (acc += curr.value),
-      ''
-    )
-  );
+  // console.log(
+  //   'test',
+  //   recipe.fields.description.content[0].content.reduce(
+  //     (acc, curr) => (acc += curr.value),
+  //     ''
+  //   )
+  // );
 
   return (
     <div onClick={() => navigate(`/recipe/${recipe.sys.id}`)} className="card">
@@ -33,18 +33,18 @@ export default function RecipeCard({ recipe }) {
       </div> */}
       <div
         className="card-img-div"
-        data-difficulty={recipe?.fields?.attributes[1]}
-        data-time={recipe?.fields?.attributes[0]}
+        // data-difficulty={recipe?.fields?.attributes[1]}
+        // data-time={recipe?.fields?.attributes[0]}
       >
         <img
           className="card-img-top"
-          src={recipe.fields.image[0].fields.file.url}
+          src={recipe.fields.imageUrl}
           alt="Card pic"
         />
       </div>
       <div>
         <div
-          data-date={recipe?.fields?.attributes[2]}
+          // data-date={recipe?.fields?.attributes[2]}
           className="card-body pb-1"
         >
           <h5 className="card-title fw-bold font-raleway">
@@ -52,14 +52,11 @@ export default function RecipeCard({ recipe }) {
           </h5>
           <p
             className="card-text font-roboto"
-            dangerouslySetInnerHTML={{
-              __html: documentToHtmlString(recipe.fields.description),
-            }}
+            // dangerouslySetInnerHTML={{
+            //   __html: documentToHtmlString(recipe.fields.description),
+            // }}
           >
-            {/* {recipe.fields.description.content[0].content.reduce(
-              (acc, curr) => (acc += curr.value),
-              ''
-            )} */}
+            {recipe.fields.descriptionNonrich}
           </p>
           {/* <div className="text-end" style={{ fontSize: 'small' }}>
             {recipe?.fields?.attributes[0]}
