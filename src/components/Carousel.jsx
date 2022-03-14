@@ -38,12 +38,12 @@ export default function RecipeCarousel({ title, description, images }) {
                     <Carousel.Item key={index}>
                       <img
                         className="carousel-item-img d-block w-100"
-                        src={img.url}
+                        src={img?.url}
                         alt={'slide ' + (index + 1)}
                       />
                       <Carousel.Caption>
-                        <h3>{img.title}</h3>
-                        <p>{img.description}</p>
+                        <h3>{img?.title}</h3>
+                        <p>{img?.description}</p>
                       </Carousel.Caption>
                     </Carousel.Item>
                   );

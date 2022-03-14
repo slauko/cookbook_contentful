@@ -25,14 +25,21 @@ export default function Landing() {
         content_type: 'recipe',
       })
       .then((recipes) => {
-        const imgs = recipes.items.map((recipe) => {
-          // console.log(recipe.fields.image[0]);
-          return {
-            title: recipe.fields.title,
-            url: recipe.fields.image[0].fields.file.url,
-            description: recipe.fields.image[0].fields.description,
-          };
-        });
+        const imgs = recipes.items
+          .map((recipe, index) => {
+            // console.log(recipe.fields.image[0]);
+            console.log('index', index);
+            if (index <= 10) {
+              return {
+                title: recipe.fields.title,
+                url: recipe.fields.imageUrl,
+                // description: recipe.fields.image[0].fields.description,
+              };
+            }
+          })
+          .filter((data) => {
+            if (data) return data;
+          });
 
         console.log('imgs', imgs);
         setImages(imgs);
