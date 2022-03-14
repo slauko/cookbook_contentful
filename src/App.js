@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <main className="container">
+      <main className="container-fluid p-0 m-0">
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/search" element={<SearchResults />} />

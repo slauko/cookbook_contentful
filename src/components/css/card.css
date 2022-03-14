@@ -1,7 +1,8 @@
 .card-col {
   /* min-width: 11rem; */
-  min-width: 13rem;
-  max-width: 18rem;
+  min-width: 12rem;
+  max-width: 16rem;
+  padding: 0.5rem 0.5rem !important;
 }
 
 .card:hover {
@@ -16,6 +17,7 @@
 
 .card {
   box-shadow: 5px 5px 20px var(--clr-primary-dark);
+  cursor: pointer;
 }
 
 .card-header {
@@ -45,6 +47,70 @@
   max-height: 10rem;
   min-height: 10rem;
   object-fit: cover;
+}
+
+.card-img-div::after {
+  content: attr(data-difficulty);
+  /* content: 'abc'; */
+  position: relative;
+  display: block;
+  color: white;
+  background: green;
+  opacity: 0.9;
+  padding: 0.2rem 0.5rem;
+  z-index: 1;
+  font-size: 12pt;
+  margin-top: -1rem;
+  left: 0.5rem;
+  border-radius: 1rem;
+  width: fit-content;
+}
+
+.card-img-div::before {
+  content: attr(data-time);
+  /* content: 'abc'; */
+  position: absolute;
+  background: rgba(122, 133, 122, 0.6);
+  color: darkslategrey;
+  text-shadow: 1px 1px 3px lightgray;
+  color: lightskyblue;
+  text-shadow: 1px 1px 3px black;
+  text-align: end;
+  display: block;
+  font-weight: bold;
+  right: 0;
+  opacity: 1;
+  padding: 0.2rem 0.5rem;
+  z-index: 1;
+  font-size: 12pt;
+  margin: 3px;
+  border-radius: 0.2rem;
+  border: 1px solid gray;
+}
+
+.card-body::before {
+  content: attr(data-date);
+  font-family: var(--font-raleway);
+  font-size: 9pt;
+  position: absolute;
+  display: block;
+  right: 3px;
+  text-align: end;
+  opacity: 1;
+  z-index: 1;
+  margin: 3px;
+  margin-top: -1.7rem;
+  /* content: 'abc'; */
+  /* font-weight: bold; */
+  /* top: -2rem; */
+  /* padding: 0.2rem 0.5rem; */
+  /* border-radius: 0.2rem; */
+
+  /* text-shadow: 1px 1px 3px lightgray; */
+}
+
+.card-text {
+  font-size: smaller;
 }
 
 .card-footer-infos {

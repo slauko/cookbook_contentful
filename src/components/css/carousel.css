@@ -6,22 +6,27 @@
     var(--clr-primary-dark) */ red,
     purple
   );
-  /* background: linear-gradient(to left top, var(--clr-primary-dark), var(--clr-primary-light-middle)); */
+  background: linear-gradient(
+    to left top,
+    var(--clr-primary-dark),
+    var(--clr-primary-light-middle)
+  );
   padding: 0;
 }
 
 .carousel-header {
-  text-shadow: 2px 2px 5px purple;
+  text-shadow: 2px 2px 5px var(--clr-primary-middle-dark);
 }
 
 .carousel-inner {
-  box-shadow: 5px 5px 10px purple;
+  box-shadow: 5px 5px 20px var(--clr-primary-dark);
+  width: 100%;
 }
 
 .carousel-item-img {
   /* height: calc(50vw); */
-  height: 40vw;
-  max-height: 25rem;
+  height: 50vw;
+  max-height: 30rem;
   min-height: 15rem;
   object-fit: cover;
 }

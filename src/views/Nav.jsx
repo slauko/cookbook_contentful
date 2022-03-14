@@ -4,7 +4,7 @@ import './css/nav.css';
 
 export default function Nav() {
   return (
-    <nav>
+    <nav className="container-fluid">
       <NavLink activeclassname="active" className="link" to="/">
         Home
       </NavLink>
@@ -15,7 +15,11 @@ export default function Nav() {
       >
         Search
       </NavLink>
-      <NavLink activeclassname="active" className="link" to="/recipe/17WMIvrpXN12XIKI7Q3rPh">
+      <NavLink
+        activeclassname="active"
+        className="link"
+        to="/recipe/17WMIvrpXN12XIKI7Q3rPh"
+      >
         Recipe
       </NavLink>
       <div className="nav-search-div">

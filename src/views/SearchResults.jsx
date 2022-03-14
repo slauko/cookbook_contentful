@@ -42,7 +42,7 @@ export default function SearchResults() {
 
   return (
     <>
-      <div className="results-div">Results for: {query.get('query')}</div>
+      {/* <div className="results-div">Results for: {query.get('query')}</div> */}
       <div>
         <RecipeCards recipes={cmsData} />
       </div>
