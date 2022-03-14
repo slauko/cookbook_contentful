@@ -23,20 +23,22 @@ export default function Recipe({ client }) {
 
   const [recipe, setRecipe] = useState(); //getRecipeFromID(id);
   return (
-    <div className="recipe-div">
+    <div className="recipe-div" style={{paddingTop: "10px", textShadow: "0 10px 10px rgba(0,0,0,0.5)"}}>
       {recipe && (
         <>
-          <div>
+          <div style={{display: "flex", flexDirection: "column"}}>
             {/* Recipe for ID: {id} */}
             <h3>{recipe.title}</h3>
             <div
               style={{
-                width: '100%',
+                width: '80%',
                 height: '80%',
                 backgroundImage: `url(${recipe.picture})`,
-                backgroundSize: 'contain',
+                backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat',
                 backgroundPosition: 'center',
+                boxShadow: "0 10px 10px rgba(0,0,0,0.2)",
+                alignSelf: "center"
               }}
             ></div>
           </div>
