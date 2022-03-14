@@ -28,7 +28,7 @@ export default function RecipeCards({ recipes }) {
                 <div className="card-col col-6 col-sm-4 col-md-3 col-lg-2 py-2">
                   <RecipeCard recipe={recipe} />
                 </div>
-                <div className="card-col col-6 col-sm-4 col-md-3 col-lg-2 py-2">
+                {/* <div className="card-col col-6 col-sm-4 col-md-3 col-lg-2 py-2">
                   <RecipeCard recipe={recipe} />
                 </div>
                 <div className="card-col col-6 col-sm-4 col-md-3 col-lg-2 py-2">
@@ -48,7 +48,7 @@ export default function RecipeCards({ recipes }) {
                 </div>
                 <div className="card-col col-6 col-sm-4 col-md-3 col-lg-2 py-2">
                   <RecipeCard recipe={recipe} />
-                </div>
+                </div> */}
               </>
             );
           })}
