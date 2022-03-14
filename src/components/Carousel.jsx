@@ -14,13 +14,14 @@ import './css/carousel.css';
 export default function RecipeCarousel({ title, description, images }) {
   console.log('images', images);
   return (
-    <section class="carousel-section container-fluid">
-      <div class="container pb-4">
+    <section class="carousel-section container-fluid p-0 m-0">
+      {/* <div class="container pb-4"> */}
+      <div>
         {/* // ######## Carousel Header */}
-        <div class="carousel-outer px-sm-2 px-md-3 rounded">
+        <div class="carousel-outer rounded">
           <div class="row">
             <div class="col">
-              <h2 class="carousel-header font-p text-white text-center display-3 mt-4 mx-2 mb-2 mb-md-0">
+              <h2 class="carousel-header font-p text-white text-center display-4 mt-4 mx-2 mb-2 mb-md-0">
                 {title}
               </h2>
               <p class="text-white text-center fst-italic d-none d-md-block">

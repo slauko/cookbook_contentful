@@ -9,6 +9,13 @@
   --clr-primary-middle: rgb(142, 78, 79, 0.7);
   --clr-primary-middle-dark: rgb(102, 62, 75, 0.7);
   --clr-primary-dark: rgb(72, 48, 59, 0.9);
+
+  /* "dark-green" color-scheme */
+  /* --clr-primary-light: rgb(219, 250, 167, 0.1);
+  --clr-primary-light-middle: rgb(120, 150, 87, 0.2);
+  --clr-primary-middle: rgb(82, 78, 29, 0.7);
+  --clr-primary-middle-dark: rgb(62, 62, 25, 0.75);
+  --clr-primary-dark: rgb(42, 48, 9, 0.85); */
 }
 
 * {
@@ -21,18 +28,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background: white;
+  /* background: white; */
+  /* background: #f0f1eb !important; */
+  background: var(--clr-primary-light-middle) !important;
 
   font-family: var(--font-raleway);
 }
 
 .App {
-  max-width: 70rem;
-  margin: auto;
+  /* max-width: 70rem; */
+  margin: 0 auto;
 }
 
 main {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   min-height: 70vh;
   background-color: whitesmoke;
 }

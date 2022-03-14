@@ -49,7 +49,7 @@ export default function Landing() {
 
   return (
     <>
-      <div className="landing-div">Landing</div>
+      {/* <div className="landing-div">Landing</div> */}
       <div>
         {/* <img
           src={images?.fields.image[0].fields.file.url}
@@ -57,7 +57,7 @@ export default function Landing() {
           alt="bild"
         /> */}
 
-        <button onClick={testCMapi}>Test CMApi</button>
+        {/* <button onClick={testCMapi}>Test CMApi</button> */}
 
         <RecipeCarousel
           title="High Rated Recipes"

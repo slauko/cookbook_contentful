@@ -6,12 +6,12 @@ export default class CMApi {
   constructor() {}
 
   async getEnv() {
-    const REACT_APP_SPACE_ID = 'h5pc0o4cj51n';
-    const REACT_APP_AUTH_TOKEN =
-      'CFPAT-sC7awhtT2aVpLiOaxg_65wLLycHqMzoTqZ98M1YGyZs';
+    const REACT_APP_SPACE_ID = process.env.REACT_APP_SPACE_ID;
+    const REACT_APP_AUTH_TOKEN_MNGMT = process.env.REACT_APP_AUTH_TOKEN_MNGMT;
+
     // const _client = contentful.createClient({accessToken: REACT_APP_AUTH_TOKEN});
     const client = Contentful.createClient({
-      accessToken: REACT_APP_AUTH_TOKEN,
+      accessToken: REACT_APP_AUTH_TOKEN_MNGMT,
       space: REACT_APP_SPACE_ID,
     });
     const space = await client.getSpace(REACT_APP_SPACE_ID);
