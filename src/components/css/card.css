@@ -57,7 +57,7 @@
   color: white;
   background: green;
   opacity: 0.9;
-  padding: 0.2rem 0.5rem;
+  padding: 0.1rem 0.6rem 0.2rem 0.2rem;
   z-index: 1;
   font-size: 12pt;
   margin-top: -1rem;
@@ -111,6 +111,14 @@
 
 .card-text {
   font-size: smaller;
+}
+
+.card-footer {
+  background: linear-gradient(
+    to left top,
+    var(--clr-primary-light),
+    var(--clr-primary-light-middle)
+  );
 }
 
 .card-footer-infos {

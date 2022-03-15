@@ -3,6 +3,7 @@ import { createClient } from 'contentful';
 import RecipeCarousel from '../components/Carousel';
 import './css/landing.css';
 import CMApi from '../importData';
+import RecipeCards from '../components/Cards';
 
 const _client = createClient({
   space: process.env.REACT_APP_SPACE_ID,
@@ -10,36 +11,27 @@ const _client = createClient({
 });
 
 export default function Landing() {
-  const [images, setImages] = useState();
+  const [images, setImages] = useState(null);
+  const [recipes, setRecipes] = useState(null);
 
   useEffect(() => {
-    // _client.getEntry('17WMIvrpXN12XIKI7Q3rPh').then((data) => {
-    //   console.log('data', data);
-    //   console.log('image-url', data.fields.image[0].fields.file.url);
-
-    //   setImages(data);
-    // });
-
     _client
       .getEntries({
         content_type: 'recipe',
       })
       .then((recipes) => {
-        const imgs = recipes.items
-          .map((recipe, index) => {
-            // console.log(recipe.fields.image[0]);
-            console.log('index', index);
-            if (index <= 10) {
-              return {
-                title: recipe.fields.title,
-                url: recipe.fields.imageUrl,
-                // description: recipe.fields.image[0].fields.description,
-              };
-            }
-          })
-          .filter((data) => {
-            if (data) return data;
-          });
+        let random = Math.floor(Math.random() * 100);
+        setRecipes(recipes.items.slice(random, random + 6));
+
+        random = Math.floor(Math.random() * 100);
+        const imgs = recipes.items.slice(random, random + 10).map((recipe) => {
+          return {
+            id: recipe.sys.id,
+            title: recipe.fields.title,
+            url: recipe.fields.imageUrl,
+            // description: recipe.fields.description,
+          };
+        });
 
         console.log('imgs', imgs);
         setImages(imgs);
@@ -67,11 +59,22 @@ export default function Landing() {
         {/* <button onClick={testCMapi}>Test CMApi</button> */}
 
         <RecipeCarousel
-          title="High Rated Recipes"
-          description="Some description"
+          title="Welcome to Cookbook"
+          description="Cookbook CMS by Group Four"
           images={images}
+          display="display-2"
         ></RecipeCarousel>
       </div>
+
+      {recipes && (
+        <div className="pt-4">
+          <RecipeCards
+            title="Favourites of the Week"
+            description="Check out trending recipes!"
+            recipes={recipes}
+          />
+        </div>
+      )}
     </>
   );
 }

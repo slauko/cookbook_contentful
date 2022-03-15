@@ -44,7 +44,11 @@ export default function SearchResults() {
     <>
       {/* <div className="results-div">Results for: {query.get('query')}</div> */}
       <div>
-        <RecipeCards recipes={cmsData} />
+        <RecipeCards
+          title="Search Results"
+          description="Some representative placeholder content for the description"
+          recipes={cmsData}
+        />
       </div>
     </>
   );

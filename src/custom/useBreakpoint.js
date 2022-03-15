@@ -13,6 +13,10 @@ const getDeviceConfig = (width) => {
   }
 };
 
+/**
+ * https://betterprogramming.pub/usebreakpoint-hook-get-media-query-breakpoints-in-react-3f1779b73568
+ * @returns
+ */
 const useBreakpoint = () => {
   const [brkPnt, setBrkPnt] = useState(() =>
     getDeviceConfig(window.innerWidth)
