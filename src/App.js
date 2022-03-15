@@ -37,7 +37,7 @@ function App() {
 
     u.items.forEach((hit) => {
       if (!hit.fields.title) return;
-      console.log(hit);
+      // console.log(hit);
       const recipe = new RecipeClass(hit);
 
       a.push(recipe);
@@ -45,7 +45,7 @@ function App() {
 
     setRecipes(a);
 
-    console.log(a);
+    // console.log(a);
   };
 
   console.log(process.env);

@@ -2,20 +2,21 @@ import React, { useEffect, useState } from 'react';
 import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-import './css/recipe.css';
 import { createClient } from 'contentful';
 import DetailedRecipeClass from '../classes/DetailedRecipeClass';
+import './css/recipe.css';
 
 import useBreakpoints from '../custom/useBreakpoint';
 
-const client = createClient({
-  space: process.env.REACT_APP_SPACE_ID,
-  accessToken: process.env.REACT_APP_AUTH_TOKEN,
-});
+// const client = createClient({
+//   space: process.env.REACT_APP_SPACE_ID,
+//   accessToken: process.env.REACT_APP_AUTH_TOKEN,
+// });
 
 export default function Recipe({ client }) {
   const { id } = useParams();
 
+  // hook to get the current breakpoint of screen size
   const point = useBreakpoints();
 
   useEffect(() => {
@@ -26,33 +27,33 @@ export default function Recipe({ client }) {
   }, []);
 
   const [recipe, setRecipe] = useState(null); //getRecipeFromID(id);
-  const [rating, setRating] = useState(null);
+  const [showRating, setShowRating] = useState(false);
   useEffect(() => {
     if (recipe) {
-      setRating(recipe?.rating);
+      setShowRating(recipe ? true : false);
     }
   }, [recipe]);
 
   useEffect(() => {
-    if (!rating) {
-      setRating(recipe?.rating);
+    if (!showRating) {
+      setShowRating(true);
     }
-  }, [rating]);
+  }, [showRating]);
 
   useEffect(() => {
     console.log('point', point);
-    setRating(null);
+    setShowRating(false);
   }, [point]);
 
   function getStarsSize() {
-    const size = point === 'xs' || point === 'sm' ? 20 : 50;
+    const size = point === 'xs' || point === 'sm' ? 30 : 50;
     console.log('size', size);
     return size;
   }
 
   const ratingChanged = (newRating) => {
     console.log('newRating', newRating);
-    setRating(null);
+    showRating(false);
     // setRating(newRating);
     // setRating(newRating);
   };
@@ -65,7 +66,7 @@ export default function Recipe({ client }) {
         }}
         className="recipe-hero container-fluid"
       ></div>
-      <div className="px-0 px-sm-3 px-md-5 pb-5">
+      <div className="container px-0 px-sm-3 px-md-5 pb-5">
         <div className="recipe-div container px-4 pb-3 px-md-5 pb-md-5 ">
           <div className="row pb-4">
             <div className="col">
@@ -85,11 +86,11 @@ export default function Recipe({ client }) {
                   </h2>
                 </div> */}
 
-                {rating && (
+                {showRating && (
                   <div className={'recipe-stars'}>
                     <ReactStars
                       count={5}
-                      value={rating}
+                      value={recipe?.rating}
                       size={getStarsSize()}
                       isHalf={true}
                       edit={false}
@@ -152,11 +153,11 @@ export default function Recipe({ client }) {
               </div>
 
               <div
-                className="fs-5"
+                className="fs-5 font-raleway"
                 dangerouslySetInnerHTML={{ __html: recipe?.preparation }}
               ></div>
             </div>
-            <div className="col col-sm-6 col-lg-4 order-first order-lg-last">
+            <div className="col col-sm-8 col-lg-4 order-first order-lg-last">
               <div className="font-fairplay fw-bold h3">Ingridients</div>
               <div className="pb-4">
                 <div className="ingridient-row container p-0 fs-6 pt-2">
@@ -164,14 +165,17 @@ export default function Recipe({ client }) {
                     recipe.ingrediens &&
                     recipe.ingrediens.map((ingredient) => {
                       return (
-                        <div className="row" key={uuidv4()}>
-                          <div className="col-4 col-sm-4 col-lg-3">
-                            <div className="font-roboto fw-lighter fst-italic text-nowrap">
+                        <div
+                          className="recipe-ingridient pt-2 fs-5 ms-2"
+                          key={uuidv4()}
+                        >
+                          <div className="">
+                            <div className="recipe-ingridient-unit font-roboto fw-lighter fst-italic text-nowrap">
                               {ingredient.amount} {ingredient.unit}
                             </div>
                           </div>
-                          <div className="col-8 col-sm-8 col-lg-9">
-                            <div className="font-fairplay">
+                          <div className="">
+                            <div className="font-raleway">
                               {ingredient.name}
                             </div>
                           </div>
@@ -183,103 +187,7 @@ export default function Recipe({ client }) {
             </div>
           </div>
         </div>
-
-        {/* Recipe for ID: {id} */}
-        {/* {recipe && (
-          <>
-            <div>
-              <h3>{recipe.title}</h3>
-              <div
-                style={{
-                  width: '100%',
-                  height: '80%',
-                  backgroundImage: `url(${recipe.picture})`,
-                  backgroundSize: 'contain',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
-                }}
-              ></div>
-            </div>
-            <div>
-              <h4>Zutaten:</h4>
-              <div className="ingrediens">
-                {recipe.ingrediens.map((ingredient) => {
-                  return (
-                    <div key={uuidv4()} style={{ minWidth: '150px' }}>
-                      {ingredient.amount}
-                      {ingredient.unit} {ingredient.description}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <h4>Beschreibung:</h4>
-              <div
-                dangerouslySetInnerHTML={{ __html: recipe.description }}
-              ></div>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignSelf: 'center',
-                  justifyContent: 'flex-end',
-                  fontStyle: 'normal',
-                  height: '100%',
-                }}
-              >
-                <ReactStars
-                  count={5}
-                  value={recipe.rating}
-                  size={50}
-                  isHalf={true}
-                  edit={false}
-                />
-                <div style={{ alignSelf: 'center' }}>
-                  {recipe.rating + ' / 5.0'}
-                </div>
-              </div>
-            </div>
-            <div>
-              <h4>Zubereitung:</h4>
-              <div
-                dangerouslySetInnerHTML={{ __html: recipe.preparation }}
-              ></div>
-            </div>
-          </>
-        )} */}
       </div>
     </>
   );
 }
-
-const testRecipe = {
-  title: 'Kuchen',
-  picture:
-    'https://de.rc-cdn.community.thermomix.com/recipeimage/jtvuiwjs-cf76f-438951-cfcd2-2nm5kkqw/b1db0880-a300-4618-ad14-18be177dfbe8/main/0815-kuchen-gugelhupf-mit-gelinggarantie.jpg',
-  description: 'Omas Lieblingskuchen',
-  ingrediens: [
-    {
-      description: 'Mehl',
-      amount: '200',
-      unit: 'g',
-    },
-    {
-      description: 'Zucker',
-      amount: '50',
-      unit: 'g',
-    },
-    {
-      description: 'Salz',
-      amount: '100',
-      unit: 'g',
-    },
-    {
-      description: 'Milch',
-      amount: '200',
-      unit: 'ml',
-    },
-  ],
-  preparation: 'Alles zusammen mixen und backen.',
-  rating: 4.7,
-};
