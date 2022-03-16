@@ -5,45 +5,57 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import Carousel from 'react-bootstrap/Carousel';
 import './css/carousel.css';
+import { Link, useNavigate } from 'react-router-dom';
 
 /**
  *
  * @param {images} images -> erwartet Objekt-Array von der Strktur [{title: 'title', url: <imgUrl>, description: 'Bild-Beschreibung'}, {title: 'Other title' ...}]
  * @returns
  */
-export default function RecipeCarousel({ title, description, images }) {
+export default function RecipeCarousel({
+  title,
+  description,
+  images,
+  id,
+  display = 'display-4',
+}) {
+  const navigate = useNavigate();
   console.log('images', images);
   return (
-    <section class="carousel-section container-fluid p-0 m-0">
-      {/* <div class="container pb-4"> */}
+    <section className="carousel-section container-fluid p-0 m-0">
+      {/* <div className="container pb-4"> */}
       <div>
         {/* // ######## Carousel Header */}
-        <div class="carousel-outer rounded">
-          <div class="row">
-            <div class="col">
-              <h2 class="carousel-header font-p text-white text-center display-4 mt-4 mx-2 mb-2 mb-md-0">
+        <div className="carousel-outer rounded">
+          <div className="row">
+            <div className="col">
+              <h2
+                className={`carousel-header font-p text-white text-center ${display} mt-4 mx-2 mb-2 mb-md-0`}
+              >
                 {title}
               </h2>
-              <p class="text-white text-center fst-italic d-none d-md-block">
+              <p className="text-white text-center fst-italic d-none d-md-block">
                 {description}
               </p>
             </div>
           </div>
-          {/* <div class="carousel-inner rounded border border-dark border-3"> */}
-          <div class="carousel-inner rounded">
+          {/* <div className="carousel-inner rounded border border-dark border-3"> */}
+          <div className="carousel-inner rounded">
             <Carousel>
               {images &&
                 images.map((img, index) => {
                   return (
                     <Carousel.Item key={index}>
                       <img
+                        onClick={() => navigate(`/recipe/${img.id}`)}
+                        style={{ cursor: 'pointer' }}
                         className="carousel-item-img d-block w-100"
-                        src={img.url}
+                        src={img?.url}
                         alt={'slide ' + (index + 1)}
                       />
-                      <Carousel.Caption>
-                        <h3>{img.title}</h3>
-                        <p>{img.description}</p>
+                      <Carousel.Caption className="d-none d-md-block bg-dark bg-gradient bg-opacity-50 mx-auto">
+                        <h3>{img?.title}</h3>
+                        <p>{img?.description}</p>
                       </Carousel.Caption>
                     </Carousel.Item>
                   );

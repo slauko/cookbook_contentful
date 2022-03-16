@@ -7,34 +7,72 @@ import './css/card.css';
 
 export default function RecipeCard({ recipe }) {
   const navigate = useNavigate();
-  const id = '17WMIvrpXN12XIKI7Q3rPh';
 
-  // console.log(
-  //   'test',
-  //   recipe.fields.description.content[0].content.reduce(
-  //     (acc, curr) => (acc += curr.value),
-  //     ''
-  //   )
-  // );
+  function getTotalTime(attrAr) {
+    const str = 'gesamtzeit';
+
+    let ret = '5 min.';
+    attrAr.forEach((attr) => {
+      const index = attr?.toLowerCase().indexOf(str);
+      if (index >= 0) {
+        // console.log(attr.substring(index + str.length + 4));
+        ret = attr
+          .substring(index + str.length + 4)
+          .replaceAll('Minuten', 'min')
+          .replaceAll('Stunden', 'h')
+          .replaceAll('Stunde', 'h');
+      }
+    });
+
+    return ret;
+  }
+
+  function getDiffuculty(attrAr) {
+    const pre = '🍵 ';
+    if (
+      attrAr.some(
+        (attr) =>
+          attr.toLowerCase().indexOf('gesamtzeit') >= 0 &&
+          attr.toLowerCase().indexOf('stunde') >= 0
+      )
+    ) {
+      return pre + 'hard';
+    } else {
+      const total = getTotalTime(attrAr);
+
+      try {
+        const split1 = total.split(' ')[1];
+        // console.log('split1', split1);
+        if (total.indexOf(' h ') < 0 && +split1 <= 35) {
+          return pre + 'easy';
+        }
+      } catch (error) {
+        return pre + 'medium';
+      }
+
+      return pre + 'medium';
+    }
+  }
+
+  function getDateTime() {
+    if (recipe && recipe.fields.dateCreated) {
+      return (
+        '📅 ' +
+        new Date(recipe.fields.dateCreated).toLocaleString('de-DE', {
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric',
+        })
+      );
+    }
+  }
 
   return (
     <div onClick={() => navigate(`/recipe/${recipe.sys.id}`)} className="card">
-      {/* <div className="card-header text-white d-flex align-items-end justify-content-evenly gap-2">
-        {recipe &&
-          recipe.fields.attributes?.map((attr, index) => {
-            if (index <= 2) {
-              return (
-                <>
-                  <div className="recipe-attr">{attr}</div>
-                </>
-              );
-            }
-          })}
-      </div> */}
       <div
         className="card-img-div"
-        // data-difficulty={recipe?.fields?.attributes[1]}
-        // data-time={recipe?.fields?.attributes[0]}
+        data-difficulty={getDiffuculty(recipe?.fields?.attributes)}
+        data-time={`🕒 ${getTotalTime(recipe?.fields?.attributes)}`}
       >
         <img
           className="card-img-top"
@@ -43,33 +81,22 @@ export default function RecipeCard({ recipe }) {
         />
       </div>
       <div>
-        <div
-          // data-date={recipe?.fields?.attributes[2]}
-          className="card-body pb-1"
-        >
-          <h5 className="card-title fw-bold font-raleway">
+        <div data-date={getDateTime()} className="card-body pb-1">
+          <h6 className="card-title fw-bold font-raleway">
             {recipe.fields.title}
-          </h5>
+          </h6>
           <p
-            className="card-text font-roboto"
+            className="card-text font-raleway"
             // dangerouslySetInnerHTML={{
             //   __html: documentToHtmlString(recipe.fields.description),
             // }}
           >
             {recipe.fields.descriptionNonrich}
           </p>
-          {/* <div className="text-end" style={{ fontSize: 'small' }}>
-            {recipe?.fields?.attributes[0]}
-          </div> */}
-          {/* <div className="d-flex justify-content-center">
-            <button
-              onClick={() => navigate(`/recipe/${recipe.sys.id}`)}
-              className="btn color-dark text-white"
-            >
-              Show me
-            </button>
-          </div> */}
-
+        </div>
+      </div>
+      <div className="card-footer d-flex align-items-end p-0 px-1">
+        <div className="card-footer-infos d-flex justify-content-end">
           <ReactStars
             count={5}
             value={recipe?.fields?.rating}
@@ -77,11 +104,8 @@ export default function RecipeCard({ recipe }) {
             isHalf={true}
             edit={false}
           />
-        </div>
-      </div>
-      <div className="card-footer color-light-middle d-flex align-items-end p-1">
-        <div className="card-footer-infos d-flex">
-          {recipe &&
+          {/* <sub style={{ paddingTop: '12px' }}>{recipe?.fields?.rating} </sub> */}
+          {/* {recipe &&
             recipe.metadata.tags?.map((tag, index) => {
               if (index <= 2) {
                 return (
@@ -90,9 +114,7 @@ export default function RecipeCard({ recipe }) {
                   </>
                 );
               }
-            })}
-          {/* <div>50 min</div>
-          <div>50 min</div> */}
+            })} */}
         </div>
       </div>
     </div>

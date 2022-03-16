@@ -46,3 +46,39 @@ export default class CMApi {
     console.log('assets', assets);
   }
 }
+
+function importChristoph() {
+  // const cm = require('contentful-management');
+  // const fs = require('fs');
+  // const { setTimeout } = require('timers');
+  // const client = cm.createClient({
+  //   accessToken: 'CFPAT-sC7awhtT2aVpLiOaxg_65wLLycHqMzoTqZ98M1YGyZs',
+  //   space: 'h5pc0o4cj51n',
+  // });
+  // client.getSpace('h5pc0o4cj51n').then((space) => {
+  //   space.getEnvironment('master').then((env) => {
+  //     fs.readFile('recipes.json', 'utf8', (err, data) => {
+  //       const recipes = JSON.parse(data);
+  //       recipes.forEach((recipe, index) => {
+  //         env
+  //           .createEntry('recipe', {
+  //             fields: {
+  //               id: { 'en-US': index + 1 },
+  //               title: { 'en-US': recipe.title },
+  //               imageUrl: { 'en-US': recipe.picture },
+  //               rating: { 'en-US': parseFloat(recipe.rating) },
+  //               ingridientsJson: { 'en-US': recipe.ingredients },
+  //               descriptionNonrich: { 'en-US': recipe.description },
+  //               preparationNonrich: { 'en-US': recipe.preparation },
+  //               dateCreated: { 'en-US': new Date() },
+  //               attributes: { 'en-US': recipe.tags },
+  //             },
+  //           })
+  //           .then((entry) => {
+  //             entry.publish();
+  //           });
+  //       });
+  //     });
+  //   });
+  // });
+}
