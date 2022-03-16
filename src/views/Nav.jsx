@@ -1,11 +1,23 @@
-import React from 'react';
-import { Container, Navbar, NavDropdown } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+// import { Container, Navbar, NavDropdown } from 'react-bootstrap';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { FaSignInAlt } from 'react-icons/fa';
 import './css/nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Nav() {
+  const navigate = useNavigate();
+
+  const [inputSearch, setInputSearch] = useState('');
+
+  function handleSearch(event) {
+    event.preventDefault();
+    console.log('inputSearch', inputSearch);
+    if (inputSearch.length >= 0) {
+      navigate(`/search?query=${inputSearch}`);
+    }
+  }
+
   return (
     <nav className="navbar navbar-expand-md navbar-light bg-light sticky-top mb-0">
       <div className="container-fluid">
@@ -102,14 +114,15 @@ export default function Nav() {
             </li>
           </ul>
           <div className="d-flex flex-grow-1 align-items-center gap-5">
-            <form className="d-flex flex-grow-1">
+            <form onSubmit={handleSearch} className="d-flex flex-grow-1">
               <div className="searchBar">
                 <input
+                  onChange={({ target }) => setInputSearch(target.value)}
                   id="searchQueryInput"
                   type="text"
                   name="searchQueryInput"
                   placeholder="Search"
-                  value=""
+                  value={inputSearch}
                 />
                 <button
                   id="searchQuerySubmit"
@@ -131,7 +144,9 @@ export default function Nav() {
             <div className="d-none d-md-block">
               <button className="border border-1 rounded-3 p-2">
                 <FaSignInAlt size={20} />
-                <div style={{ fontSize: '8pt' }}>Login</div>
+                <div style={{ fontSize: '9pt', fontWeight: 'lighter' }}>
+                  Login
+                </div>
               </button>
             </div>
           </div>

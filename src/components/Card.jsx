@@ -104,6 +104,7 @@ export default function RecipeCard({ recipe }) {
             isHalf={true}
             edit={false}
           />
+          {/* <sub style={{ paddingTop: '12px' }}>{recipe?.fields?.rating} </sub> */}
           {/* {recipe &&
             recipe.metadata.tags?.map((tag, index) => {
               if (index <= 2) {
