@@ -32,7 +32,9 @@ export default function SearchResults() {
     _client
       .getEntries({
         content_type: 'recipe',
-        query: query.get('query'),
+        // match ist leider nicht wirklich 'contain' -> eher ein 'startsWith' -> https://github.com/contentful/contentful.js/issues/405
+        'fields.title[match]': query.get('query'),
+        // query: query.get('query'),
       })
       .then((recipes) => {
         setCmsData(recipes.items);
@@ -40,7 +42,7 @@ export default function SearchResults() {
 
     return;
   }, [query]);
-  // console.log('query', query);
+  // console.log('cmsData', cmsData);
 
   return (
     <>

@@ -13,6 +13,7 @@ export default class DetailedRecipeClass {
     this.picture = hit.fields.imageUrl;
     // this.description = documentToHtmlString(hit.fields.description);
     this.description = hit.fields.descriptionNonrich;
+    this.attributes = hit.fields.attributes;
   }
   setIngrediens(list) {
     let listIngrediens = [];

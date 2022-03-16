@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { FaSignInAlt } from 'react-icons/fa';
 import './css/nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Util from '../classes/Util';
 
 export default function Nav() {
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ export default function Nav() {
               <NavLink
                 activeclassname="active"
                 className="nav-link link"
-                to="/search?query=kuchen&type=desert"
+                to="/search"
               >
                 Search
               </NavLink>
@@ -109,6 +110,55 @@ export default function Nav() {
                   >
                     Your Favourites
                   </NavLink>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Colors
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li
+                  onClick={() => Util.changeColor('gray-rose')}
+                  className="d-flex gap-2 align-items-center"
+                >
+                  <div className="color-scheme scheme-gray m-1"></div>
+                  <div>gray</div>
+                </li>
+                <li
+                  onClick={() => Util.changeColor('green-1')}
+                  className="d-flex gap-2 align-items-center"
+                >
+                  <div className="color-scheme scheme-green m-1"></div>
+                  <div>green</div>
+                </li>
+                <li
+                  onClick={() => Util.changeColor('red-1')}
+                  className="d-flex gap-2 align-items-center"
+                >
+                  <div className="color-scheme scheme-red m-1"></div>
+                  <div>red</div>
+                </li>
+                <li
+                  onClick={() => Util.changeColor('blue-1')}
+                  className="d-flex gap-2 align-items-center"
+                >
+                  <div className="color-scheme scheme-blue m-1"></div>
+                  <div>blue</div>
+                </li>
+                <li
+                  onClick={() => Util.changeColor('dark-green')}
+                  className="d-flex gap-2 align-items-center"
+                >
+                  <div className="color-scheme scheme-darkgreen m-1"></div>
+                  <div>dark-green</div>
                 </li>
               </ul>
             </li>

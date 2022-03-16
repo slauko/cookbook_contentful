@@ -21,13 +21,13 @@ export default function Landing() {
         content_type: 'recipe',
       })
       .then((recipes) => {
-        let random = Math.floor(Math.random() * 100);
+        let random = Math.floor(Math.random() * 95);
         setRecipes(recipes.items.slice(random, random + 5));
 
-        random = Math.floor(Math.random() * 100);
+        random = Math.floor(Math.random() * 95);
         setRecipes2(recipes.items.slice(random, random + 5));
 
-        random = Math.floor(Math.random() * 100);
+        random = Math.floor(Math.random() * 90);
         const imgs = recipes.items.slice(random, random + 10).map((recipe) => {
           return {
             id: recipe.sys.id,

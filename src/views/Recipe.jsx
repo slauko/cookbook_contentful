@@ -7,6 +7,7 @@ import DetailedRecipeClass from '../classes/DetailedRecipeClass';
 import './css/recipe.css';
 
 import useBreakpoints from '../custom/useBreakpoint';
+import RecipeInfo from '../components/RecipeInfo';
 
 // const client = createClient({
 //   space: process.env.REACT_APP_SPACE_ID,
@@ -21,7 +22,7 @@ export default function Recipe({ client }) {
 
   useEffect(() => {
     client.getEntry(id).then(function (entry) {
-      console.log(entry);
+      // console.log(entry);
       setRecipe(new DetailedRecipeClass(entry));
     });
   }, []);
@@ -47,7 +48,7 @@ export default function Recipe({ client }) {
 
   function getStarsSize() {
     const size = point === 'xs' || point === 'sm' ? 30 : 50;
-    console.log('size', size);
+    // console.log('size', size);
     return size;
   }
 
@@ -102,48 +103,7 @@ export default function Recipe({ client }) {
             </div>
           </div>
 
-          <div className="row text-center border border-1 p-2">
-            <div className="col-6 col-sm-6 col-lg-3 border-end">
-              <div>
-                <div className="font-fairplay text-color-middle fw-lighter fst-italic">
-                  Preparation Time
-                </div>
-                <h2 className="font-raleway display-7 fw-bold mt-2 mx-2 mb-2 mb-md-0">
-                  100min
-                </h2>
-              </div>
-            </div>
-            <div className="col-6 col-sm-6 col-lg-3 border-end">
-              <div>
-                <div className="font-fairplay text-color-middle fw-lighter fst-italic">
-                  Cooking Time
-                </div>
-                <h2 className="font-raleway display-7 fw-bold mt-2 mx-2 mb-2 mb-md-0">
-                  60min
-                </h2>
-              </div>
-            </div>
-            <div className="col-6 col-sm-6 col-lg-3 border-end">
-              <div>
-                <div className="font-fairplay text-color-middle fw-lighter fst-italic">
-                  Serves
-                </div>
-                <h2 className="font-raleway display-7 fw-bold mt-2 mx-2 mb-2 mb-md-0">
-                  6
-                </h2>
-              </div>
-            </div>
-            <div className="col-6 col-sm-6 col-lg-3">
-              <div>
-                <div className="font-fairplay text-color-middle fw-lighter fst-italic">
-                  Difficulty
-                </div>
-                <h2 className="font-raleway display-7 fw-bold mt-2 mx-2 mb-2 mb-md-0">
-                  Easy
-                </h2>
-              </div>
-            </div>
-          </div>
+          <RecipeInfo recipe={recipe} />
 
           <div className="row pt-5">
             <div className="recipe-method-col col-12 col-sm-12 col-lg-8 pt-4 pt-lg-0 border-end order-last order-lg-first">
