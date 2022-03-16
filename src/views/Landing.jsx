@@ -13,6 +13,7 @@ const _client = createClient({
 export default function Landing() {
   const [images, setImages] = useState(null);
   const [recipes, setRecipes] = useState(null);
+  const [recipes2, setRecipes2] = useState(null);
 
   useEffect(() => {
     _client
@@ -21,7 +22,10 @@ export default function Landing() {
       })
       .then((recipes) => {
         let random = Math.floor(Math.random() * 100);
-        setRecipes(recipes.items.slice(random, random + 6));
+        setRecipes(recipes.items.slice(random, random + 5));
+
+        random = Math.floor(Math.random() * 100);
+        setRecipes2(recipes.items.slice(random, random + 5));
 
         random = Math.floor(Math.random() * 100);
         const imgs = recipes.items.slice(random, random + 10).map((recipe) => {
@@ -72,6 +76,16 @@ export default function Landing() {
             title="Favourites of the Week"
             description="Check out trending recipes!"
             recipes={recipes}
+          />
+        </div>
+      )}
+
+      {recipes2 && (
+        <div className="py-2 color-light-middle">
+          <RecipeCards
+            title="Vegetarian Trends"
+            description="Healthy Recipes with great taste"
+            recipes={recipes2}
           />
         </div>
       )}

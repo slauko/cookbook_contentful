@@ -28,16 +28,18 @@ export default function SearchResults() {
     //   setImages(data);
     // });
 
+    console.log('query', query.get('query'));
     _client
       .getEntries({
         content_type: 'recipe',
+        query: query.get('query'),
       })
       .then((recipes) => {
         setCmsData(recipes.items);
       });
 
     return;
-  }, []);
+  }, [query]);
   // console.log('query', query);
 
   return (
