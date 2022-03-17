@@ -24,7 +24,7 @@ export default function Nav() {
     event.preventDefault();
     console.log('inputSearch', inputSearch);
     if (inputSearch.length >= 0) {
-      navigate(`/search?query=${inputSearch}`);
+      navigate(`${process.env.PUBLIC_URL}/search?query=${inputSearch}`);
     }
   }
 
@@ -64,7 +64,7 @@ export default function Nav() {
               <NavLink
                 activeclassname="active"
                 className="nav-link link"
-                to="/"
+                to={`${process.env.PUBLIC_URL}/`}
               >
                 Home
               </NavLink>
@@ -73,7 +73,7 @@ export default function Nav() {
               <NavLink
                 activeclassname="active"
                 className="nav-link link"
-                to="/search"
+                to={`${process.env.PUBLIC_URL}/search`}
               >
                 Search
               </NavLink>
@@ -94,8 +94,8 @@ export default function Nav() {
                   <NavLink
                     activeclassname="active"
                     className="nav-link link"
-                    to="/search?query=kuchen&type=desert"
-                  >
+                    to={`${process.env.PUBLIC_URL}/search`}
+                    >
                     Newest
                   </NavLink>
                 </li>
@@ -103,7 +103,7 @@ export default function Nav() {
                   <NavLink
                     activeclassname="active"
                     className="nav-link link"
-                    to="/search?query=kuchen&type=desert"
+                    to={`${process.env.PUBLIC_URL}/search`}
                   >
                     Best
                   </NavLink>
@@ -115,7 +115,7 @@ export default function Nav() {
                   <NavLink
                     activeclassname="active"
                     className="nav-link link"
-                    to="/search?query=kuchen&type=desert"
+                    to={`${process.env.PUBLIC_URL}/search`}
                   >
                     Your Favourites
                   </NavLink>

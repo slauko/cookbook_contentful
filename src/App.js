@@ -55,7 +55,7 @@ function App() {
     // console.log(a);
   };
 
-  // console.log(process.env);
+  //console.log(process.env);
 
   return (
     <div className="App">
@@ -67,9 +67,9 @@ function App() {
       <Nav />
       <main className="container-fluid p-0 m-0">
         <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/search" element={<SearchResults />} />
-          <Route path="/recipe/:id" element={<Recipe client={client} />} />
+          <Route path={`${process.env.PUBLIC_URL}/`} element={<Landing />} />
+          <Route path={`${process.env.PUBLIC_URL}/search`} element={<SearchResults />} />
+          <Route path={`${process.env.PUBLIC_URL}/recipe/:id`} element={<Recipe client={client} />} />
         </Routes>
       </main>
       <Footer />
