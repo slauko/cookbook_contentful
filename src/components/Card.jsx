@@ -4,75 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import ReactStars from 'react-rating-stars-component';
 import './css/card.css';
+import Util from '../classes/Util';
 
 export default function RecipeCard({ recipe }) {
   const navigate = useNavigate();
-
-  function getTotalTime(attrAr) {
-    const str = 'gesamtzeit';
-
-    let ret = '5 min.';
-    attrAr.forEach((attr) => {
-      const index = attr?.toLowerCase().indexOf(str);
-      if (index >= 0) {
-        // console.log(attr.substring(index + str.length + 4));
-        ret = attr
-          .substring(index + str.length + 4)
-          .replaceAll('Minuten', 'min')
-          .replaceAll('Stunden', 'h')
-          .replaceAll('Stunde', 'h');
-      }
-    });
-
-    return ret;
-  }
-
-  function getDiffuculty(attrAr) {
-    const pre = '🍵 ';
-    if (
-      attrAr.some(
-        (attr) =>
-          attr.toLowerCase().indexOf('gesamtzeit') >= 0 &&
-          attr.toLowerCase().indexOf('stunde') >= 0
-      )
-    ) {
-      return pre + 'hard';
-    } else {
-      const total = getTotalTime(attrAr);
-
-      try {
-        const split1 = total.split(' ')[1];
-        // console.log('split1', split1);
-        if (total.indexOf(' h ') < 0 && +split1 <= 35) {
-          return pre + 'easy';
-        }
-      } catch (error) {
-        return pre + 'medium';
-      }
-
-      return pre + 'medium';
-    }
-  }
-
-  function getDateTime() {
-    if (recipe && recipe.fields.dateCreated) {
-      return (
-        '📅 ' +
-        new Date(recipe.fields.dateCreated).toLocaleString('de-DE', {
-          year: 'numeric',
-          month: 'numeric',
-          day: 'numeric',
-        })
-      );
-    }
-  }
 
   return (
     <div onClick={() => navigate(`/recipe/${recipe.sys.id}`)} className="card">
       <div
         className="card-img-div"
-        data-difficulty={getDiffuculty(recipe?.fields?.attributes)}
-        data-time={`🕒 ${getTotalTime(recipe?.fields?.attributes)}`}
+        data-difficulty={Util.getDiffuculty(recipe?.fields?.attributes)}
+        data-time={`🕒 ${Util.getTotalTime(recipe?.fields?.attributes)}`}
       >
         <img
           className="card-img-top"
@@ -81,7 +23,7 @@ export default function RecipeCard({ recipe }) {
         />
       </div>
       <div>
-        <div data-date={getDateTime()} className="card-body pb-1">
+        <div data-date={Util.getDateTime(recipe)} className="card-body pb-1">
           <h6 className="card-title fw-bold font-raleway">
             {recipe.fields.title}
           </h6>

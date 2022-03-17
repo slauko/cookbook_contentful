@@ -101,3 +101,29 @@ main {
 .react-stars > span {
   text-shadow: 1px 1px 2px black;
 }
+
+.color-scheme {
+  border: 1px solid black;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.scheme-red {
+  background: red;
+}
+
+.scheme-green {
+  background: green;
+}
+
+.scheme-darkgreen {
+  background: rgb(42, 48, 9, 0.85);
+}
+
+.scheme-blue {
+  background: blue;
+}
+
+.scheme-gray {
+  background: gray;
+}

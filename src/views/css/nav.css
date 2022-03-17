@@ -37,8 +37,8 @@ a.active {
 .dropdown-menu {
   background: linear-gradient(
     to left top,
-    var(--clr-primary-light-middle),
-    var(--clr-primary-light)
+    var(--clr-primary-light),
+    var(--clr-primary-light-middle)
   ) !important;
   box-shadow: 1px 1px 3px gray;
 }
@@ -46,10 +46,17 @@ a.active {
 .navbar,
 .dropdown-menu > li {
   font-size: smaller;
+  font-weight: 500;
+  /* background: var(--clr-primary-light-middle); */
+}
+
+.nav-item:hover {
+  font-weight: 600;
 }
 
 .dropdown-menu > li:hover {
   background-color: var(--clr-primary-light-middle) !important;
+  font-weight: 600;
 }
 
 .searchBar {
