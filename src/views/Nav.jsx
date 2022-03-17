@@ -15,7 +15,7 @@ export default function Nav() {
     event.preventDefault();
     console.log('inputSearch', inputSearch);
     if (inputSearch.length >= 0) {
-      navigate(`/search?query=${inputSearch}`);
+      navigate(`${process.env.PUBLIC_URL}/search?query=${inputSearch}`);
     }
   }
 

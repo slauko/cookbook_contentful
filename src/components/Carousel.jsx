@@ -47,7 +47,7 @@ export default function RecipeCarousel({
                   return (
                     <Carousel.Item key={index}>
                       <img
-                        onClick={() => navigate(`/recipe/${img.id}`)}
+                        onClick={() => navigate(`${process.env.PUBLIC_URL}/recipe/${img.id}`)}
                         style={{ cursor: 'pointer' }}
                         className="carousel-item-img d-block w-100"
                         src={img?.url}
