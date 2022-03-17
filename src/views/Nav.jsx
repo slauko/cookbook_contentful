@@ -6,6 +6,15 @@ import './css/nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Util from '../classes/Util';
 
+const colors = [
+  'blue-1',
+  'dark-green',
+  'gray-rose',
+  'green-1',
+  'red-1',
+  'yellow',
+];
+
 export default function Nav() {
   const navigate = useNavigate();
 
@@ -125,41 +134,16 @@ export default function Nav() {
                 Colors
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li
-                  onClick={() => Util.changeColor('gray-rose', true)}
-                  className="d-flex gap-2 align-items-center"
-                >
-                  <div className="color-scheme scheme-gray m-1"></div>
-                  <div>gray</div>
-                </li>
-                <li
-                  onClick={() => Util.changeColor('green-1', true)}
-                  className="d-flex gap-2 align-items-center"
-                >
-                  <div className="color-scheme scheme-green m-1"></div>
-                  <div>green</div>
-                </li>
-                <li
-                  onClick={() => Util.changeColor('red-1', true)}
-                  className="d-flex gap-2 align-items-center"
-                >
-                  <div className="color-scheme scheme-red m-1"></div>
-                  <div>red</div>
-                </li>
-                <li
-                  onClick={() => Util.changeColor('blue-1', true)}
-                  className="d-flex gap-2 align-items-center"
-                >
-                  <div className="color-scheme scheme-blue m-1"></div>
-                  <div>blue</div>
-                </li>
-                <li
-                  onClick={() => Util.changeColor('dark-green', true)}
-                  className="d-flex gap-2 align-items-center"
-                >
-                  <div className="color-scheme scheme-darkgreen m-1"></div>
-                  <div>dark-green</div>
-                </li>
+                {colors.map((color, index) => (
+                  <li
+                    key={index}
+                    onClick={() => Util.changeColor(color, true)}
+                    className="d-flex gap-2 align-items-center"
+                  >
+                    <div className={`color-scheme scheme-${color} m-1`}></div>
+                    <div>{color.replaceAll('-1', '')}</div>
+                  </li>
+                ))}
               </ul>
             </li>
           </ul>

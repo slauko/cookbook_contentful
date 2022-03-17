@@ -107,22 +107,26 @@ main {
   height: 1.5rem;
 }
 
-.scheme-red {
+.scheme-red-1 {
   background: red;
 }
 
-.scheme-green {
+.scheme-green-1 {
   background: green;
 }
 
-.scheme-darkgreen {
+.scheme-dark-green {
   background: rgb(42, 48, 9, 0.85);
 }
 
-.scheme-blue {
+.scheme-blue-1 {
   background: blue;
 }
 
-.scheme-gray {
+.scheme-gray-rose {
   background: gray;
+}
+
+.scheme-yellow {
+  background: yellow;
 }
