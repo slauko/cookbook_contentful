@@ -65,7 +65,7 @@ export default class Util {
    *
    * @param {*} cssFileName Dateiname der Css-Datei
    */
-  static changeColor(cssFileName) {
+  static changeColor(cssFileName, reload = false) {
     console.log(`changeColor : ${cssFileName}`);
 
     require(`../color-schemes/${cssFileName}.css`);
@@ -74,6 +74,8 @@ export default class Util {
 
     // merken im Cookie
     Cookies.set('colors', cssFileName);
+
+    if (reload) window.location.reload(); // dirty und infinite-anfaellig
   }
 
   /**

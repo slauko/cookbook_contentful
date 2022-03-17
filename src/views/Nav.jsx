@@ -126,35 +126,35 @@ export default function Nav() {
               </a>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li
-                  onClick={() => Util.changeColor('gray-rose')}
+                  onClick={() => Util.changeColor('gray-rose', true)}
                   className="d-flex gap-2 align-items-center"
                 >
                   <div className="color-scheme scheme-gray m-1"></div>
                   <div>gray</div>
                 </li>
                 <li
-                  onClick={() => Util.changeColor('green-1')}
+                  onClick={() => Util.changeColor('green-1', true)}
                   className="d-flex gap-2 align-items-center"
                 >
                   <div className="color-scheme scheme-green m-1"></div>
                   <div>green</div>
                 </li>
                 <li
-                  onClick={() => Util.changeColor('red-1')}
+                  onClick={() => Util.changeColor('red-1', true)}
                   className="d-flex gap-2 align-items-center"
                 >
                   <div className="color-scheme scheme-red m-1"></div>
                   <div>red</div>
                 </li>
                 <li
-                  onClick={() => Util.changeColor('blue-1')}
+                  onClick={() => Util.changeColor('blue-1', true)}
                   className="d-flex gap-2 align-items-center"
                 >
                   <div className="color-scheme scheme-blue m-1"></div>
                   <div>blue</div>
                 </li>
                 <li
-                  onClick={() => Util.changeColor('dark-green')}
+                  onClick={() => Util.changeColor('dark-green', true)}
                   className="d-flex gap-2 align-items-center"
                 >
                   <div className="color-scheme scheme-darkgreen m-1"></div>
