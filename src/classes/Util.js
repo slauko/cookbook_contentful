@@ -70,7 +70,10 @@ export default class Util {
 
     // require(`../color-schemes/${cssFileName}.css`);
 
-    this.loadFile(`/static/css/color-schemes/${cssFileName}.css`, 'css');
+    this.loadFile(
+      `${process.env.PUBLIC_URL}/static/css/color-schemes/${cssFileName}.css`,
+      'css'
+    );
     // this.loadFile('test', 'css');
 
     // merken im Cookie
