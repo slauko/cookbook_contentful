@@ -18,8 +18,6 @@ const client = createClient({
   accessToken: process.env.REACT_APP_AUTH_TOKEN,
 });
 
-const colors = ['blue-1', 'dark-green', 'gray-rose', 'green-1', 'red-1'];
-
 function App() {
   const [recipes, setRecipes] = useState([]);
 
