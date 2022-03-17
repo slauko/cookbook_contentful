@@ -52,6 +52,13 @@ export default function Recipe({ client }) {
     return size;
   }
 
+  function getBorderEnd() {
+    const borderend =
+      point === 'xs' || point === 'sm' || point === 'md' ? '' : 'border-end';
+    // console.log('borderend', borderend);
+    return borderend;
+  }
+
   const ratingChanged = (newRating) => {
     console.log('newRating', newRating);
     showRating(false);
@@ -106,7 +113,9 @@ export default function Recipe({ client }) {
           <RecipeInfo recipe={recipe} />
 
           <div className="row pt-5">
-            <div className="recipe-method-col col-12 col-sm-12 col-lg-8 pt-4 pt-lg-0 border-end order-last order-lg-first">
+            <div
+              className={`recipe-method-col col-12 col-sm-12 col-lg-8 pt-4 pt-lg-0 ${getBorderEnd()} order-last order-lg-first`}
+            >
               <div className="font-fairplay fw-bold h3">Method</div>
               <div className="pb-4">
                 <img className="recipe-image" src={recipe?.picture} alt="" />

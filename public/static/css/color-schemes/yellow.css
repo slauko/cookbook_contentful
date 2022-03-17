@@ -1,5 +1,6 @@
 :root {
   /* "blue-ish" color-scheme */
+  --clr-primary-light-light: rgba(227, 230, 100, 0.05);
   --clr-primary-light: rgba(227, 230, 100, 0.1);
   --clr-primary-light-middle: rgba(179, 167, 60, 0.2);
   --clr-primary-middle: rgba(133, 129, 38, 0.733);

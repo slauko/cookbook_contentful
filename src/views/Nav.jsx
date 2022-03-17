@@ -24,7 +24,7 @@ export default function Nav() {
     event.preventDefault();
     console.log('inputSearch', inputSearch);
     if (inputSearch.length >= 0) {
-      navigate(`${process.env.PUBLIC_URL}/search?query=${inputSearch}`);
+      navigate(`/search?query=${inputSearch}`);
     }
   }
 
@@ -64,7 +64,7 @@ export default function Nav() {
               <NavLink
                 activeclassname="active"
                 className="nav-link link"
-                to={`${process.env.PUBLIC_URL}/`}
+                to={`/`}
               >
                 Home
               </NavLink>
@@ -73,7 +73,7 @@ export default function Nav() {
               <NavLink
                 activeclassname="active"
                 className="nav-link link"
-                to={`${process.env.PUBLIC_URL}/search`}
+                to={`/search`}
               >
                 Search
               </NavLink>
@@ -94,8 +94,8 @@ export default function Nav() {
                   <NavLink
                     activeclassname="active"
                     className="nav-link link"
-                    to={`${process.env.PUBLIC_URL}/search`}
-                    >
+                    to={`/search`}
+                  >
                     Newest
                   </NavLink>
                 </li>
@@ -103,7 +103,7 @@ export default function Nav() {
                   <NavLink
                     activeclassname="active"
                     className="nav-link link"
-                    to={`${process.env.PUBLIC_URL}/search`}
+                    to={`/search`}
                   >
                     Best
                   </NavLink>
@@ -115,7 +115,7 @@ export default function Nav() {
                   <NavLink
                     activeclassname="active"
                     className="nav-link link"
-                    to={`${process.env.PUBLIC_URL}/search`}
+                    to={`/search`}
                   >
                     Your Favourites
                   </NavLink>

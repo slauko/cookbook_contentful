@@ -71,10 +71,11 @@
   /* content: 'abc'; */
   position: absolute;
   background: rgba(122, 133, 122, 0.6);
-  color: darkslategrey;
-  text-shadow: 1px 1px 3px lightgray;
-  color: lightskyblue;
+  color: yellow;
   text-shadow: 1px 1px 3px black;
+  /* color: lightskyblue; */
+  /* color: var(--clr-primary-dark); */
+  /* text-shadow: 1px 1px 3px lightgray; */
   text-align: end;
   display: block;
   font-weight: bold;
