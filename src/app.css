@@ -28,9 +28,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* background: white; */
+  background: whitesmoke;
   /* background: #f0f1eb !important; */
-  background: var(--clr-primary-light-middle) !important;
+  /* background: var(--clr-primary-light-middle) !important; */
 
   font-family: var(--font-raleway);
 }
@@ -43,7 +43,7 @@ body {
 main {
   /* border: 1px solid black; */
   min-height: 70vh;
-  background-color: whitesmoke;
+  background-color: var(--clr-primary-light-light);
 }
 
 .font-roboto {
@@ -56,6 +56,10 @@ main {
 
 .font-raleway {
   font-family: var(--font-raleway);
+}
+
+.color-light-light {
+  background: var(--clr-primary-light-light) !important;
 }
 
 .color-light {

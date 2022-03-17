@@ -10,7 +10,7 @@ export default function RecipeCard({ recipe }) {
   const navigate = useNavigate();
 
   return (
-    <div onClick={() => navigate(`${process.env.PUBLIC_URL}/recipe/${recipe.sys.id}`)} className="card">
+    <div onClick={() => navigate(`/recipe/${recipe.sys.id}`)} className="card">
       <div
         className="card-img-div"
         data-difficulty={Util.getDiffuculty(recipe?.fields?.attributes)}

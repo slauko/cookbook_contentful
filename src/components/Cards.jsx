@@ -5,7 +5,7 @@ import './css/cards.css';
 export default function RecipeCards({ recipes, title, description }) {
   // console.log(recipes);
   return (
-    <section className="card-section container-fluid mt-3 mb-5 p-0">
+    <section className="card-section container-fluid p-0 pb-5">
       {/* <!-- ######## Card Header  --> */}
       <div className="row">
         <div className="col">

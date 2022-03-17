@@ -67,9 +67,9 @@ function App() {
       <Nav />
       <main className="container-fluid p-0 m-0">
         <Routes>
-          <Route path={`${process.env.PUBLIC_URL}/`} element={<Landing />} />
-          <Route path={`${process.env.PUBLIC_URL}/search`} element={<SearchResults />} />
-          <Route path={`${process.env.PUBLIC_URL}/recipe/:id`} element={<Recipe client={client} />} />
+          <Route path={`/`} element={<Landing />} />
+          <Route path={`/search`} element={<SearchResults />} />
+          <Route path={`/recipe/:id`} element={<Recipe client={client} />} />
         </Routes>
       </main>
       <Footer />
