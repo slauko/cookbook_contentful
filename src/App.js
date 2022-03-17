@@ -57,7 +57,7 @@ function App() {
     // console.log(a);
   };
 
-  console.log(process.env);
+  //console.log(process.env);
 
   return (
     <div className="App">
