@@ -10,30 +10,24 @@ export default function RecipeCard({ recipe }) {
   const navigate = useNavigate();
 
   return (
-    <div onClick={() => navigate(`/recipe/${recipe.sys.id}`)} className="card">
+    <div onClick={() => navigate(`/recipe/${recipe.id}`)} className="card">
       <div
         className="card-img-div"
-        data-difficulty={Util.getDiffuculty(recipe?.fields?.attributes)}
-        data-time={`🕒 ${Util.getTotalTime(recipe?.fields?.attributes)}`}
+        data-difficulty={Util.getDiffuculty(recipe?.totalTime)}
+        data-time={`🕒 ${recipe?.totalTime}`}
       >
-        <img
-          className="card-img-top"
-          src={recipe.fields.imageUrl}
-          alt="Card pic"
-        />
+        <img className="card-img-top" src={recipe.url} alt="Card pic" />
       </div>
       <div>
         <div data-date={Util.getDateTime(recipe)} className="card-body pb-1">
-          <h6 className="card-title fw-bold font-raleway">
-            {recipe.fields.title}
-          </h6>
+          <h6 className="card-title fw-bold font-raleway">{recipe.title}</h6>
           <p
             className="card-text font-raleway"
             // dangerouslySetInnerHTML={{
-            //   __html: documentToHtmlString(recipe.fields.description),
+            //   __html: documentToHtmlString(recipe.description),
             // }}
           >
-            {recipe.fields.descriptionNonrich}
+            {recipe.description}
           </p>
         </div>
       </div>
@@ -41,7 +35,7 @@ export default function RecipeCard({ recipe }) {
         <div className="card-footer-infos d-flex justify-content-end">
           <ReactStars
             count={5}
-            value={recipe?.fields?.rating}
+            value={recipe?.rating}
             size={20}
             isHalf={true}
             edit={false}

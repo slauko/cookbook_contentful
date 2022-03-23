@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 // import { Container, Navbar, NavDropdown } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
+import Util from '../classes/Util';
+import CookbookService from '../api/recipeService';
 import { FaSignInAlt } from 'react-icons/fa';
 import './css/nav.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Util from '../classes/Util';
 
 const colors = [
   'blue-1',
@@ -26,6 +27,19 @@ export default function Nav() {
     if (inputSearch.length >= 0) {
       navigate(`/search?query=${inputSearch}`);
     }
+  }
+
+  /** TEST */
+  function handleCreateUser() {
+    console.log('test api -> create User');
+
+    const testuser = {
+      username: 'Mike',
+      email: 'mike@wbs.de',
+      validated: true,
+    };
+
+    CookbookService.createUser(testuser);
   }
 
   return (
@@ -69,7 +83,7 @@ export default function Nav() {
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink
                 activeclassname="active"
                 className="nav-link link"
@@ -78,6 +92,11 @@ export default function Nav() {
                 Search
               </NavLink>
             </li>
+            <li className="nav-item">
+              <button onClick={handleCreateUser} className="nav-link link">
+                Create User
+              </button>
+            </li> */}
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"

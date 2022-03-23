@@ -1,57 +1,54 @@
 import Cookies from 'js-cookie';
 
 export default class Util {
-  static getTotalTime(attrAr, str = 'gesamtzeit') {
-    if (!attrAr) return '';
-
-    let ret = '5 min.';
-    attrAr.forEach((attr) => {
-      const index = attr?.toLowerCase().indexOf(str.toLocaleLowerCase());
-      if (index >= 0) {
-        // console.log(attr.substring(index + str.length + 4));
-        ret = attr
-          .substring(index + str.length + 4)
-          .replaceAll('Minuten', 'min')
-          .replaceAll('Stunden', 'h')
-          .replaceAll('Stunde', 'h');
-      }
-    });
-
-    return ret;
+  constructor() {
+    this.attrKeys = {
+      COOKTIME: 1,
+      PREPTIME: 2,
+      WORKTIME: 3,
+      TOTALTIME: 4,
+      RESTTIME: 5,
+      SERVINGS: 6,
+      DIFFICULTY: 7,
+    };
   }
 
-  static getDiffuculty(attrAr) {
+  getRecipeTime(attrAr, attrKey = this.attrKeys.TOTALTIME) {
+    console.log('attrAr', attrAr);
+    console.log('attrKey', attrKey);
+    if (!attrAr) return '';
+
+    const recipeTime = attrAr.find((attr) => attr.attributeKeyId === attrKey);
+
+    if (recipeTime) return recipeTime.value1;
+  }
+
+  static getDiffuculty(totalTime) {
     const pre = '🍵 ';
-    if (
-      attrAr.some(
-        (attr) =>
-          attr.toLowerCase().indexOf('gesamtzeit') >= 0 &&
-          attr.toLowerCase().indexOf('stunde') >= 0
-      )
-    ) {
+    const total = totalTime;
+
+    if (total.indexOf('h') >= 0) {
       return pre + 'hard';
-    } else {
-      const total = this.getTotalTime(attrAr);
+    }
 
-      try {
-        const split1 = total.split(' ')[1];
-        // console.log('split1', split1);
-        if (total.indexOf(' h ') < 0 && +split1 <= 35) {
-          return pre + 'easy';
-        }
-      } catch (error) {
-        return pre + 'medium';
+    try {
+      const split = total.split(' ')[0];
+      console.log('split', split);
+      if (total.indexOf(' h ') < 0 && +split <= 35) {
+        return pre + 'easy';
       }
-
+    } catch (error) {
       return pre + 'medium';
     }
+
+    return pre + 'medium';
   }
 
   static getDateTime(recipe) {
-    if (recipe && recipe.fields.dateCreated) {
+    if (recipe && recipe.recipeDate) {
       return (
         '📅 ' +
-        new Date(recipe.fields.dateCreated).toLocaleString('de-DE', {
+        new Date(recipe.recipeDate).toLocaleString('de-DE', {
           year: 'numeric',
           month: 'numeric',
           day: 'numeric',

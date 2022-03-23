@@ -26,7 +26,7 @@ export default function RecipeCards({ recipes, title, description }) {
             // console.log(recipe.fields.image[0]);
             return (
               <div
-                key={recipe.fields.id}
+                key={recipe.id}
                 className="card-col col-6 col-sm-4 col-md-3 col-lg-2 py-2"
               >
                 <RecipeCard recipe={recipe} />

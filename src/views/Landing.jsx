@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { createClient } from 'contentful';
 import RecipeCarousel from '../components/Carousel';
-import './css/landing.css';
-import CMApi from '../importData';
+import CookbookService from '../api/recipeService';
 import RecipeCards from '../components/Cards';
-
-const _client = createClient({
-  space: process.env.REACT_APP_SPACE_ID,
-  accessToken: process.env.REACT_APP_AUTH_TOKEN,
-});
+import './css/landing.css';
 
 export default function Landing() {
   const [images, setImages] = useState(null);
@@ -16,39 +10,30 @@ export default function Landing() {
   const [recipes2, setRecipes2] = useState(null);
 
   useEffect(() => {
-    _client
-      .getEntries({
-        content_type: 'recipe',
-      })
-      .then((recipes) => {
-        let random = Math.floor(Math.random() * 95);
-        setRecipes(recipes.items.slice(random, random + 5));
+    CookbookService.searchRecipes('%').then((recipes) => {
+      let random = Math.floor(Math.random() * 95);
+      setRecipes(recipes.slice(random, random + 5));
 
-        random = Math.floor(Math.random() * 95);
-        setRecipes2(recipes.items.slice(random, random + 5));
+      random = Math.floor(Math.random() * 95);
+      setRecipes2(recipes.slice(random, random + 5));
 
-        random = Math.floor(Math.random() * 90);
-        const imgs = recipes.items.slice(random, random + 10).map((recipe) => {
-          return {
-            id: recipe.sys.id,
-            title: recipe.fields.title,
-            url: recipe.fields.imageUrl,
-            // description: recipe.fields.description,
-          };
-        });
-
-        console.log('imgs', imgs);
-        setImages(imgs);
+      random = Math.floor(Math.random() * 90);
+      const imgs = recipes.slice(random, random + 10).map((recipe) => {
+        // console.log('recipe', recipe);
+        return {
+          id: recipe.id,
+          title: recipe.title,
+          url: recipe.url,
+          description: recipe.description,
+        };
       });
+
+      // console.log('imgs', imgs);
+      setImages(imgs);
+    });
 
     return;
   }, []);
-
-  function testCMapi() {
-    const cmapi = new CMApi();
-
-    cmapi.getAssets();
-  }
 
   return (
     <>

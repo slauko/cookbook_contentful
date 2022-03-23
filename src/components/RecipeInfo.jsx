@@ -3,6 +3,7 @@ import Util from '../classes/Util';
 import useBreakpoints from '../custom/useBreakpoint';
 
 const serves = Math.floor(2 + Math.random() * 4);
+const util = new Util();
 
 export default function RecipeInfo({ recipe }) {
   // hook to get the current breakpoint of screen size
@@ -20,11 +21,12 @@ export default function RecipeInfo({ recipe }) {
       <div className="col-6 col-sm-6 col-lg-3 border-end px-0">
         <div>
           <div className="font-fairplay text-color-dark fw-lighter fst-italic">
-            Preparation Time
+            Work Time
           </div>
           <h2 className="font-raleway display-7 fw-bold mt-2 mx-0 mb-2 mb-md-0 px-0 text-nowrap">
             {recipe &&
-              '🕒 ' + Util.getTotalTime(recipe?.attributes, 'arbeitszeit')}
+              '🕒 ' +
+                util.getRecipeTime(recipe?.attributes, util.attrKeys.WORKTIME)}
           </h2>
         </div>
       </div>
@@ -35,7 +37,8 @@ export default function RecipeInfo({ recipe }) {
           </div>
           <h2 className="font-raleway display-7 fw-bold mt-2 mx-0 mb-2 mb-md-0 px-0 text-nowrap">
             {recipe &&
-              '🕒 ' + Util.getTotalTime(recipe?.attributes, 'Koch-/Backzeit')}
+              '🕒 ' +
+                util.getRecipeTime(recipe?.attributes, util.attrKeys.COOKTIME)}
           </h2>
         </div>
       </div>
@@ -56,7 +59,8 @@ export default function RecipeInfo({ recipe }) {
             Difficulty
           </div>
           <h2 className="font-raleway display-7 fw-bold mt-2 mx-0 mb-2 mb-md-0 text-nowrap">
-            {recipe && Util.getDiffuculty(recipe.attributes)}
+            {recipe &&
+              Util.getDiffuculty(util.getRecipeTime(recipe?.attributes))}
           </h2>
         </div>
       </div>
