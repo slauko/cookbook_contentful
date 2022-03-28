@@ -1,6 +1,6 @@
 {
   "name": "cookbook_contentful",
-  "homepage": "https://slauko.github.io/cookbook_contentful",
+  "homepage": "https://tomesde.github.io/cookbook_elephant",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,8 +10,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
     "bootstrap": "^5.1.3",
-    "contentful": "^9.1.12",
-    "contentful-management": "^8.2.0",
     "gh-pages": "^3.2.3",
     "js-cookie": "^3.0.1",
     "lodash.throttle": "^4.1.1",
